@@ -1,15 +1,14 @@
-import Actor from "./actor";
-import Ability from "../abilities/ability";
-import { Affectable } from "../effects/effect";
+import { Ability } from "../abilities/ability";
+import { Actor } from "./actor";
 
-class PlayingActor extends Actor implements Affectable {
+export class Battler extends Actor {
   protected hp: number;
   protected abilities: Ability[];
 
-  constructor(id: string, hp: number, abilities: Ability[]) {
+  constructor(id: string, hp: number) {
     super(id);
     this.hp = hp;
-    this.abilities = abilities;
+    this.abilities = [];
   }
 
   public getHp() {
@@ -22,6 +21,9 @@ class PlayingActor extends Actor implements Affectable {
   public getAbilities() {
     return this.abilities;
   }
+  public addAbility(ability: Ability) {
+    this.abilities.push(ability);
+  }
 
   /**
    * @implements
@@ -32,5 +34,3 @@ class PlayingActor extends Actor implements Affectable {
     else this.hp = newHp;
   }
 }
-
-export default PlayingActor;

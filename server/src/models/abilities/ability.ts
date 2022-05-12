@@ -5,13 +5,8 @@ export class Ability {
   protected cooldownTime: number;
   protected magnitude: number;
 
-  constructor(
-    effects: Effect[],
-    castTime: number,
-    cooldownTime: number,
-    magnitude: number
-  ) {
-    this.effects = effects;
+  constructor(castTime: number, cooldownTime: number, magnitude: number) {
+    this.effects = [];
     this.castTime = castTime;
     this.cooldownTime = cooldownTime;
     this.magnitude = magnitude;
@@ -20,5 +15,7 @@ export class Ability {
   public getEffects() {
     return this.effects;
   }
+  public addEffect(effect: Effect) {
+    this.effects.push(effect);
+  }
 }
-export default Ability;
